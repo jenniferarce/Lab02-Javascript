@@ -34,9 +34,9 @@
     </aside>
   
     <script>
-      var form = document.querySelector();
-      var texto = document.querySelector();
-      var campo = document.querySelector();
+   var form = document.querySelector('form[name=validar]');
+      var texto = document.querySelector('.mensaje strong');
+      var campo = document.querySelector('input[name=captcha]');
       
       var preguntas = ['10 mas 10', '55 menos 5', '20 dividido 4'];
       var respuestas = [20, 50, 5];
@@ -44,19 +44,24 @@
       var respuesta;
       texto.innerHTML = generarCaptcha();
       
-      form.on____ = validarCaptcha;
+      form.onsubmit = validarCaptcha;
       
       function generarCaptcha(){
         //seleccionar un indice al azar
+        var random= Math.floor(Math.random() * preguntas.length);
+        respuesta=respuestas[random];
         //guardar en la variable respuesta la respuesta que corresponde al mismo indice
         //retornar la pregunta que corresponda al mismo indice
+        return preguntas[random];
       }
       
-      function validarCaptcha(){
-        var valor; //obtener el valor que escribio el usuario
-        var coincide; //guardar en un booleano si el valor es igual a la respuesta esperada
+      function validarCaptcha(e){
+        var valor = campo.value; //obtener el valor que escribio el usuario
+        var coincide = respuesta == valor; //guardar en un booleano si el valor es igual a la respuesta esperada
         if(!coincide){
-         //cancelar el evento 
+         //cancelar el evento
+         e.preventDefault();
+		 campo.classList.add('error');
         }
       }
     </script>
