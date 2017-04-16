@@ -35,14 +35,22 @@
       //podemos seleccionar por nombre utilizando la sintaxis CSS!
       var email = document.querySelector('input[name=email]');
       var repetir = document.querySelector('input[name=email2]');
-      repetir.on____ = ______;
+      repetir.onblur = validarEmail;
       
       function validarEmail(){
-        var sonIguales = false; //comparar!
+        repetir.classList.remove('ok');
+        repetir.classList.remove('error');
+        
+        var sonIguales = email.value == repetir.value; //comparar!
+ 
         if(sonIguales){
+          console.log("son iguales");
+          repetir.classList.add('ok');
           //asignar la clase 'ok'
         }else{
           //asignar la clase 'error'
+          console.log("son diferentes");
+          repetir.classList.add('error');
         }
       }
     </script>
