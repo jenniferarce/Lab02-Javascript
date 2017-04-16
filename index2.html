@@ -55,21 +55,25 @@
     </aside>
   
     <script>
-      var todas; //seleccionar todas las habitaciones
-      var select; //seleccionar el select
+       var todas = document.querySelectorAll('.habitacion'); //seleccionar todas las habitaciones
+      var select = document.querySelector('select[name=habitacion]'); //seleccionar el select
       
-      select.on_____ = mostrarOpcion;
+      select.onchange = mostrarOpcion;
       esconderTodas();
       
       function esconderTodas(){
         for(var i=0; i < todas.length; i++){
+          todas[i].classList.add('esconder');
           //asignarle la clase escondida a cada una
         }
       }
       function mostrarOpcion(){
-        var opcion; //obtener la opción seleccionada
-        var elegida = document.querySelector('.habitacion--'); //seleccionar la habitación correspondiente usando un selector dinámico
-        elegida.classList.remove('escondida');
+        var opcion = select.value; //obtener la opción seleccionada
+        esconderTodas();
+        if(opcion == 0) return;
+        
+        var elegida = document.querySelector('.habitacion--'+opcion); //seleccionar la habitación correspondiente usando un selector dinámico
+        elegida.classList.remove('esconder');
       }
     </script>
   </body>
