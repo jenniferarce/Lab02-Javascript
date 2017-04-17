@@ -58,12 +58,13 @@
       }
       
       function validarCaptcha(e){
+	campo.classList.remove('error');
         var valor = campo.value; //obtener el valor que escribio el usuario
         var coincide = respuesta == valor; //guardar en un booleano si el valor es igual a la respuesta esperada
         if(!coincide){
          //cancelar el evento
          e.preventDefault();
-		 campo.classList.add('error');
+	campo.classList.add('error');
         }
       }
     </script>
