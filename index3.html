@@ -49,8 +49,10 @@
       function generarCaptcha(){
         //seleccionar un indice al azar
         var random= Math.floor(Math.random() * preguntas.length);
-        respuesta=respuestas[random];
+        
         //guardar en la variable respuesta la respuesta que corresponde al mismo indice
+	respuesta=respuestas[random];
+	      
         //retornar la pregunta que corresponda al mismo indice
         return preguntas[random];
       }
